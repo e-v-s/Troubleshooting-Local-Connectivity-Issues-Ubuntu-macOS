@@ -1,10 +1,10 @@
 # Troubleshooting: Local Connectivity Issues (Ubuntu ↔ macOS)
 
-## Navigation
+## Menu
 
 - [Troubleshooting: Local Connectivity Issues (Ubuntu ↔ macOS)](#troubleshooting-local-connectivity-issues-ubuntu--macos)
-  - [Navigation](#navigation)
-  - [Versions](#versions)
+  - [Menu](#menu)
+  - [Versões](#versões)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
   - [Skills Utilizadas](#skills-utilizadas)
   - [Contexto](#contexto)
@@ -32,10 +32,10 @@
   - [Lições Aprendidas](#lições-aprendidas)
   - [Conclusão](#conclusão-3)
 
-## Versions
+## Versões
 
 - **Português (atual)**
-- [English Version](./README_EN.md)
+- [English Version](./README_en.md)
 
 ## Tecnologias Utilizadas
 
