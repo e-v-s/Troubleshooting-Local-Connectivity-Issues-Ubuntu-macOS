@@ -1,8 +1,8 @@
-# Troubleshooting: Local Connectivity Issues (Ubuntu ↔ macOS)
+# Troubleshooting: Problemas na Conectividade Local (Ubuntu ↔ macOS)
 
 ## Menu
 
-- [Troubleshooting: Local Connectivity Issues (Ubuntu ↔ macOS)](#troubleshooting-local-connectivity-issues-ubuntu--macos)
+- [Troubleshooting: Problemas na Conectividade Local (Ubuntu ↔ macOS)](#troubleshooting-problemas-na-conectividade-local-ubuntu--macos)
   - [Menu](#menu)
   - [Versões](#versões)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
