@@ -46,5 +46,108 @@ Após essa correção `ping 8.8.8.8` passou a funcionar.
 
 **O problema persistiu para HTTP/SSH**
 
+## Etapa 2: Verificação de Firewall
 
+### Ubuntu
 
+- ufw status → inactive
+- Nenhuma regra explícita bloqueando portas
+
+### macOS
+
+- Firewall desativado
+- Nenhum proxy configurado
+- Sem VPN ativa
+
+Firewall descartado como causa.
+
+## Etapa 3: Verificação do Servidor SSH no Ubuntu
+
+### Sintomas
+
+- ssh localhost inicialmente retornava connection refused
+- ss -lntp | grep :22 não mostrava nenhuma porta escutando
+- journalctl -xeu ssh não mostrava erros
+
+### Conclusão
+
+O openssh-server não estava ativo corretamente.
+
+### Correção
+
+- Reinstalação do openssh-server
+- Inicialização manual do serviço ssh via systemctl
+- Confirmação de LISTEN na porta 22
+
+### Após isso
+
+`ssh -v localhost`passou a funcionar corretamente
+
+## Etapa 4: Interferência do libvirt / iptables
+
+Mesmo com ufw desativado, o libvirt havia inserido regras automáticas no iptables.
+
+### Teste realizado
+
+- Flush completo do iptables
+- Políticas padrão definidas como ACCEPT
+- `ssh -v localhost` continuou funcionando
+- SSH remoto ainda não funcionava
+
+### Conclusão
+O bloqueio não estava no iptables do Ubuntu.
+
+## Etapa 5: Teste Cruzado de Rede
+
+Conexão via hotspot do celular (Ubuntu e macOS na mesma rede móvel):
+
+- SSH funcionou imediatamente
+- HTTP local funcionou
+
+## Conclusão Final
+
+O problema não estava nos sistemas, mas sim no roteador Wi-Fi residencial F6600R (ZTE fornecido pelo ISP). Este é um problema conhecido, inclusive.
+
+## Root Cause
+
+O roteador ZTE aplica isolamento entre clientes Wi-Fi (client isolation):
+
+- Wi-Fi ↔ Wi-Fi bloqueado
+- Wi-Fi ↔ Gateway permitido
+- Internet funciona normalmente
+- Comunicação lateral entre dispositivos não é permitida
+- Não existe opção visível na interface para desativar esse comportamento
+
+### Esse isolamento
+
+- Bloqueava SSH
+- Bloqueava HTTP local
+- Permitia apenas conexões curtas (ex.: nc)
+- Não apresentava erros claros no sistema operacional
+
+### Evidência
+
+- Comunicação falha na Wi-Fi do roteador ZTE
+- Comunicação funciona imediatamente via hotspot móvel
+- Nenhuma alteração adicional de configuração necessária
+
+### Soluções Práticas Adotadas
+
+- Usar hotspot do celular para transferência de arquivos quando necessário
+- Utilizar em redes confiáveis
+- Evitar depender de Wi-Fi de operadora para ambientes de laboratório
+
+## Lições Aprendidas
+
+- Conectividade com a internet não implica conectividade local
+- IPv6 pode mascarar problemas de IPv4
+- Nem todo bloqueio é visível via firewall ou configurações do OS
+- Roteadores de operadora não são ambientes confiáveis para labs técnicos
+
+## Conclusão
+
+Após investigação completa envolvendo sistema operacional, firewall, virtualização, rede e testes cruzados, o problema foi identificado como isolamento de clientes Wi-Fi imposto pelo roteador ZTE.
+
+Nenhum erro foi encontrado na configuração do Ubuntu ou do macOS.
+
+Este troubleshooting reforça a importância de sempre validar a camada de rede física e lógica antes de assumir falhas de software.
