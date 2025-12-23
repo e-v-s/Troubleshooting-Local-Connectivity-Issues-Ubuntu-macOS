@@ -61,7 +61,7 @@ dsadsa
 
 ## Context
 
-While setting up my homelab (Ubuntu as the host with KVM/libvirt and macOS as the workstation), I ran into several issues when trying to establish local communication between an Ubuntu laptop (Lenovo ThinkPad T480) and a MacBook on the same residential Wi-Fi network.
+While setting up my network/cybersec homelab (Ubuntu as the host with KVM/libvirt and macOS as the workstation), I ran into several issues when trying to establish local communication between an Ubuntu laptop (Lenovo ThinkPad T480) and a MacBook on the same residential Wi-Fi network.
 
 The initial symptoms pointed to failures in seemingly simple services (local HTTP, SSH, SCP), which led to a full troubleshooting process covering operating system configuration, firewall rules, virtualization layers, and network behavior.
 
