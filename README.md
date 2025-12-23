@@ -184,6 +184,8 @@ Este roteador aplica isolamento entre clientes Wi-Fi (client isolation) de forma
 - Comunicação funciona imediatamente via hotspot móvel
 - Nenhuma alteração adicional de configuração necessária
 
+<img src=".\images\evidence-1.png">
+
 ## Soluções Práticas Adotadas
 
 - Uso de hotspot do celular para transferências locais quando necessário

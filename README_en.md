@@ -189,6 +189,8 @@ This router silently enforces client isolation between Wi-Fi devices, even on th
 - Communication works immediately via mobile hotspot
 - No additional configuration changes required
 
+<img src=".\images\evidence-1.png">
+
 ## Practical Solutions Adopted
 
 - Use mobile hotspot when local transfers are needed
