@@ -5,6 +5,7 @@
 - [Troubleshooting: Local Connectivity Issues (Ubuntu ↔ macOS)](#troubleshooting-local-connectivity-issues-ubuntu--macos)
   - [Navigation](#navigation)
   - [Versions](#versions)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
   - [Skills Utilizadas](#skills-utilizadas)
   - [Contexto](#contexto)
   - [Sintomas Observados](#sintomas-observados)
@@ -40,10 +41,9 @@
 
 ---
 
-|Tecnologias Utilizadas |
-| --- |
-|
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white) ![KVM](https://img.shields.io/badge/KVM-00599C?logo=linux&logoColor=white) ![libvirt](https://img.shields.io/badge/libvirt-5A2D82) ![OpenSSH](https://img.shields.io/badge/OpenSSH-000000?logo=openssh&logoColor=white) ![iptables](https://img.shields.io/badge/iptables-777777) ![Network Troubleshooting](https://img.shields.io/badge/Networking-Debugging-blue) |
+## Tecnologias Utilizadas
+
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white) ![KVM](https://img.shields.io/badge/KVM-00599C?logo=linux&logoColor=white) ![libvirt](https://img.shields.io/badge/libvirt-5A2D82) ![OpenSSH](https://img.shields.io/badge/OpenSSH-000000?logo=openssh&logoColor=white) ![iptables](https://img.shields.io/badge/iptables-777777) ![Network Troubleshooting](https://img.shields.io/badge/Networking-Debugging-blue)
 
 ---
 
