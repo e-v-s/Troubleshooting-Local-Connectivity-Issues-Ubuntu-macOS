@@ -32,20 +32,14 @@
   - [Lições Aprendidas](#lições-aprendidas)
   - [Conclusão](#conclusão-3)
 
----
-
 ## Versions
 
 - **Português (atual)**
 - [English Version](./README_EN.md)
 
----
-
 ## Tecnologias Utilizadas
 
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white) ![KVM](https://img.shields.io/badge/KVM-00599C?logo=linux&logoColor=white) ![libvirt](https://img.shields.io/badge/libvirt-5A2D82) ![OpenSSH](https://img.shields.io/badge/OpenSSH-000000?logo=openssh&logoColor=white) ![iptables](https://img.shields.io/badge/iptables-777777) ![Network Troubleshooting](https://img.shields.io/badge/Networking-Debugging-blue)
-
----
 
 ## Skills Utilizadas
 
@@ -57,8 +51,6 @@
 - Testes cruzados de conectividade
 - Metodologia de troubleshooting estruturado
 
----
-
 ## Contexto
 
 Durante a configuração do meu homelab (Ubuntu como host com KVM/libvirt, macOS como workstation), enfrentei uma série de problemas ao tentar realizar comunicação local entre o notebook Ubuntu (Lenovo ThinkPad T480) e um MacBook na mesma rede Wi-Fi residencial.
@@ -66,8 +58,6 @@ Durante a configuração do meu homelab (Ubuntu como host com KVM/libvirt, macOS
 Os sintomas iniciais indicavam falhas em serviços aparentemente simples (HTTP local, SSH, SCP), o que levou a uma investigação completa envolvendo sistema operacional, firewall, virtualização e rede.
 
 Este documento descreve o processo real de troubleshooting, os testes realizados, os falsos positivos descartados e o root cause final.
-
----
 
 ## Sintomas Observados
 
@@ -81,8 +71,6 @@ Este documento descreve o processo real de troubleshooting, os testes realizados
 - `nc` (netcat) conseguia conectar
 - SSH (`ssh user@ip`) não conectava
 - SCP não funcionava inicialmente
-
----
 
 ## Etapa 1: Diagnóstico de IPv4 vs IPv6
 
@@ -109,8 +97,6 @@ Após essa correção, `ping 8.8.8.8` passou a funcionar.
 
 **O problema persistiu para HTTP/SSH.**
 
----
-
 ## Etapa 2: Verificação de Firewall
 
 ### Ubuntu
@@ -125,8 +111,6 @@ Após essa correção, `ping 8.8.8.8` passou a funcionar.
 - Sem VPN ativa
 
 Firewall descartado como causa.
-
----
 
 ## Etapa 3: Verificação do Servidor SSH no Ubuntu
 
@@ -148,7 +132,6 @@ O `openssh-server` não estava ativo corretamente.
 
 Após isso, `ssh -v localhost` passou a funcionar corretamente.
 
----
 
 ## Etapa 4: Interferência do libvirt / iptables
 
@@ -165,7 +148,6 @@ Mesmo com `ufw` desativado, o `libvirt` havia inserido regras automáticas no `i
 
 O bloqueio não estava no `iptables` do Ubuntu.
 
----
 
 ## Etapa 5: Teste Cruzado de Rede
 
@@ -174,7 +156,6 @@ Conexão via hotspot do celular (Ubuntu e macOS na mesma rede móvel):
 - SSH funcionou imediatamente
 - HTTP local funcionou
 
----
 
 ## Root Cause
 
@@ -203,16 +184,12 @@ Este roteador aplica isolamento entre clientes Wi-Fi (client isolation) de forma
 - Comunicação funciona imediatamente via hotspot móvel
 - Nenhuma alteração adicional de configuração necessária
 
----
-
 ## Soluções Práticas Adotadas
 
 - Uso de hotspot do celular para transferências locais quando necessário
 - Uso de SSH/SCP apenas em redes confiáveis
 - Evitar dependência de Wi-Fi de operadora para ambientes de laboratório
 - Planejamento de uso de roteador próprio para o homelab
-
----
 
 ## Lições Aprendidas
 
@@ -222,8 +199,6 @@ Este roteador aplica isolamento entre clientes Wi-Fi (client isolation) de forma
 - Roteadores de operadora não são ambientes confiáveis para labs técnicos
 - Testes cruzados de rede são fundamentais para identificar root cause real
 
----
-
 ## Conclusão
 
 Após investigação completa envolvendo sistema operacional, firewall, virtualização, rede e testes cruzados, o problema foi identificado como isolamento de clientes Wi-Fi imposto pelo roteador ZTE.
@@ -232,4 +207,3 @@ Nenhum erro foi encontrado na configuração do Ubuntu ou do macOS.
 
 Este troubleshooting reforça a importância de validar a camada de rede física e lógica antes de assumir falhas de software.
 
----
